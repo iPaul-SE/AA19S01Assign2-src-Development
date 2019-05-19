@@ -1,0 +1,47 @@
+package development;
+
+public class Edge {
+	
+	private String label, srcLabel, tarLabel;
+	private int weight;
+	
+	public Edge(String srcLabel, String tarLabel, int weight) {
+		label = srcLabel + "-" + tarLabel;
+		this.srcLabel = srcLabel;
+		this.tarLabel = tarLabel;
+		this.weight = weight;
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	public String getSrcLabel() {
+		return srcLabel;
+	}
+
+	public void setSrcLabel(String srcLabel) {
+		this.srcLabel = srcLabel;
+	}
+
+	public String getTarLabel() {
+		return tarLabel;
+	}
+
+	public void setTarLabel(String tarLabel) {
+		this.tarLabel = tarLabel;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+}
