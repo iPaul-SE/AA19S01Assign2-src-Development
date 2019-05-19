@@ -1,0 +1,104 @@
+package development;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TestClass {
+	
+	static List<Vertex> vertices = new ArrayList<Vertex>();
+	static List<Edge> edges = new ArrayList<Edge>();
+	static List<Vertex> impassibles = new ArrayList<Vertex>();
+	static String[][] graph;
+	static boolean found = false;
+
+	public static void main(String[] args) {
+						
+		impassibles.add(new Vertex("22"));
+		impassibles.add(new Vertex("32"));
+		impassibles.add(new Vertex("42"));
+		impassibles.add(new Vertex("12"));
+		impassibles.add(new Vertex("13"));
+		impassibles.add(new Vertex("23"));
+		impassibles.add(new Vertex("33"));
+		impassibles.add(new Vertex("24"));
+		
+		for (Vertex vert : impassibles) {
+			System.out.print(vert.getLabel() + " ");
+		}
+		System.out.println("\n");
+		
+		graph = new String[7][7];
+				
+		for (Integer r = 0; r < graph.length; r++) {
+			for (Integer c = 0; c < graph[r].length; c++) {
+				String vertLabel = r.toString() + c.toString();
+				for (Vertex vertex : impassibles) {
+					if (!vertex.getLabel().equals(vertLabel)) {
+						found = true;
+					} else {
+						found = false;
+					}
+				}
+				if (!found) {
+					vertices.add(new Vertex(vertLabel));
+					graph[r][c] = vertLabel;
+				} else {
+					graph[r][c] = "--";
+				}
+			}
+		}
+		
+		vertexList();
+		printGraph();		
+		
+//		edges.add(new Edge("A","B", 1));
+//		edges.add(new Edge("A","D", 1));
+//		edges.add(new Edge("B","C", 1));
+//		edges.add(new Edge("B","E", 1));
+//		edges.add(new Edge("C","F", 1));
+//		edges.add(new Edge("D","E", 1));
+//		edges.add(new Edge("D","G", 1));
+//		edges.add(new Edge("E","F", 1));
+//		edges.add(new Edge("E","H", 1));
+//		edges.add(new Edge("F","I", 1));
+//		edges.add(new Edge("G","H", 1));
+//		edges.add(new Edge("H","I", 1));
+//				
+//		System.out.println("-- List edges " + edges.get(0).getLabel() + " to " + edges.get(edges.size()-1).getLabel() + " --");
+//		System.out.println("Label\tsrcLabel\ttarLabel\tWeight");
+//		for (Edge i : edges) {
+//			System.out.println(i.getLabel() + "\t   " + i.getSrcLabel() + "\t\t   " + i.getTarLabel() + "\t\t   " + i.getWeight());
+//		}
+//		System.out.println("\n");
+		
+	}
+	
+	private static void vertexList() {
+		System.out.println("-- VERTEX LIST --");
+//		for (int i = (graph.length*(graph[0].length-1)) + 1; i >= 0; ) {
+//			if (i%graph.length != 0) {
+//				System.out.print(vertices.get(i-1).getLabel() + " ");
+//				i++;
+//			} else {
+//				System.out.println(vertices.get(i-1).getLabel() + " ");
+//				i = i-((graph.length*2)-1);
+//			}
+//		}
+		for (Vertex v : vertices) {
+			System.out.print(v.getLabel() + " ");
+		}
+		System.out.println();
+	}
+	
+	private static void printGraph() {
+		System.out.println("-- GRAPH --");		
+		for (int r = graph.length; r > 0; r--) {
+			for (int c = 0; c < graph[0].length; c++) {
+				System.out.print(graph[r-1][c] + " ");
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+
+}
